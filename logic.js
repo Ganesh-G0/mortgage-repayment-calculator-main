@@ -51,7 +51,8 @@ $(document).ready(() => {
     $("#amt").val("");
     $("#term").val("");
     $("#rate").val("");
-    console.log("clearAll")
+    $(".empty-result").removeClass("d-none");    
+    $(".complete-result").addClass("d-none");   
   }); 
   function mortgageCalculator(type) {
     let amount = $("#amt").val();
