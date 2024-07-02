@@ -1,0 +1,325 @@
+:root {
+  --lime: hsl(61, 70%, 52%);
+  --red: hsl(4, 69%, 50%);
+  --white: hsl(0, 0%, 100%);
+  --slate100: hsl(202, 86%, 94%);
+  --slate300: hsl(203, 41%, 72%);
+  --slate500: hsl(200, 26%, 54%);
+  --slate700: hsl(200, 24%, 40%);
+  --slate900: hsl(202, 55%, 16%);
+}
+/* Box sizing rules */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* Prevent font size inflation */
+html {
+  text-size-adjust: none;
+}
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4, button, input, label {
+  line-height: 1.1;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  color: currentColor;
+  text-decoration-skip-ink: auto;
+}
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+html {
+  font-size: 62.5%;  
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 1rem; 
+  border-radius: 1rem;
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;  
+  background: var(--lime);
+}
+body {
+  line-height: 1.5;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: var(--white);
+}
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+/* --------------------------------------------------main */
+main {
+  height: fit-content;
+  display: grid;
+  grid-template-areas: "form" "result";
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+form { grid-area: form; }
+.result-div {grid-area: result;}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+/* --------------------------------------------------form */
+form {
+  gap: 2rem;
+  padding: 2rem;
+  justify-content: space-between;
+  color: var(--slate900);
+  text-transform: capitalize;
+}
+input:focus {
+  outline: 1px solid var(--slate700); 
+  border: 1px solid var(--slate700);
+}
+.title-clr-btn-div {
+  justify-content: space-between;
+  gap: 1rem;
+}
+.form-group,
+.forms-input-group {
+  display: grid;
+  gap: .5rem;
+}
+.forms-input-group { 
+  gap: 1rem;
+}
+.input-group,
+.input-group-invert {
+  display: grid;
+  grid-template-areas: "ic0n input";
+  grid-template-columns: .1fr 1fr;
+  border: 1px solid var(--slate500);
+  border-bottom-width: 2px;
+  border-radius: .5rem;
+}
+.input-group-invert {
+  grid-template-columns: 1fr .1fr;
+  grid-template-areas: "input ic0n";
+}
+/* .form-group:nth-child(2) > .input-group-invert { border-width: 2px;} */
+.icon {
+  grid-area: ic0n;
+  border-radius: .5rem 0 0 .5rem;
+  padding: 1rem;
+  color: var(--slate900);
+  background-color: var(--slate100);
+  text-transform: none;
+  font-weight: 900;
+}
+.input-group-invert > .icon {
+  border-radius: 0 .5rem .5rem 0;
+}
+.input {
+  border-radius: .5rem;
+  grid-area: input;
+  padding: 1rem;
+  border: none;
+}
+/* --------------------------------------------------form */
+.radio-btn-group {
+  gap: 1rem;
+}
+.radio-btn-group > .radio-group {
+  padding: 1rem;
+  border: 1px solid var(--slate500);
+  border-bottom-width: 2px;
+  font-weight: 900;
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+.radio-btn-group > .radio-group > label,
+.radio-btn-group > .radio-group > input {
+  cursor: pointer;
+}
+input[type="radio"] {
+	appearance: none;
+	width: 2.5rem;
+  aspect-ratio: 1/1;
+	padding: 3px;
+	border-radius: 50%;
+	background-clip: content-box;
+	border: .2rem solid var(--slate700);
+}
+input[type="radio"]:checked {
+  border-color: var(--lime);  
+	background-color: var(--lime);
+}
+/* ----------------------------------------btn */
+.clr-all-btn {
+  border: 0;
+  background-color: var(--white);
+  color: var(--slate700);
+  text-decoration: underline;
+  width: fit-content;
+  cursor: pointer;
+}
+.submit-btn {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--slate900);
+  background-color: var(--lime);
+  padding: 1rem;
+  border-radius: 4rem;
+  border: none;
+  cursor: pointer;
+}
+@media(hover:hover) {
+  .submit-btn:hover { background-color: hsla(61, 70%, 52%, .5); }
+  .clr-all-btn:hover { color: var(--slate900); }
+  .radio-group:hover { border-color: var(--lime); }
+}
+@media(hover:none) {
+  .submit-btn:active { background-color: hsla(61, 70%, 52%, .5); }
+  .clr-all-btn:hover { color: var(--slate900); }
+  .radio-group:hover { border-color: var(--lime); }
+}
+/* ----------------------------------------empty Result section */
+.result-div {
+  color: var(--white);
+  background-color: var(--slate900);
+}
+.empty-result, 
+.complete-result {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 90%;
+  margin: 2rem auto;   
+}
+.empty-result > img {
+  width: 60%;
+  max-width: 22rem;
+}
+.complete-result { text-align: left;}
+.empty-result > p,
+.complete-result > section > p {
+  color: var(--slate300);
+}
+/* ------------------------------complete result */
+.complete-result {
+  gap: 2rem;
+}
+.complete-result > section > h1 {
+  font-size: 3rem;
+}
+.complete-result > section > p {
+  font-size: 1.8rem;
+}
+.complete-result > .final-result {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1rem;
+  border-radius: .5rem;
+  border-top: .3rem solid var(--lime);
+  background-color: hsl(200, 50%, 12%);
+}
+.complete-result > .final-result > p:nth-of-type(1), 
+.complete-result > .final-result > p:nth-of-type(3) {
+  font-size: 1.5rem;
+  color: var(--slate300);
+}
+.complete-result > .final-result > p:nth-of-type(2) {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--lime);
+}
+.complete-result > .final-result > p:nth-of-type(4) {
+  color: var(--white);
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+.complete-result > .final-result > .hr {
+  height: 1px;
+  margin: 1rem auto;
+  background-color: var(--slate700);
+}
+@media(min-width: 768px) {
+  body {
+    align-items: center;
+    background-color: var(--slate100);
+  }
+  main {
+    width: 90%;
+    max-width: 80rem;
+    background-color: var(--white);
+    border-radius: 2rem;
+  }
+  main > div {
+    border-radius: 0 0 2rem 2rem;
+  }
+  .title-clr-btn-div {
+    align-items: center;
+    flex-direction: row;
+  }
+  .forms-input-group {
+    grid-template-areas: "amount amount" "term rate";
+  }
+  .amount-div { grid-area: amount; }
+  .term-div { grid-area: term; }
+  .rate-div { grid-area: rate; }
+  .submit-btn {
+    padding: 1rem 4rem;
+    width: fit-content;
+  }
+  .empty-result > p,
+  .complete-result > section > p {
+    font-size: 1.8rem;
+  }
+}
+@media(min-width: 1024px) {
+  main {
+    border-radius: 2rem;
+    max-width: 110rem;
+    grid-template-columns: 1fr .9fr;
+    grid-template-areas: "form result";
+  }
+  .result-div {
+    border-radius: 0 2rem 2rem 6rem;
+  }
+  .complete-result > .final-result > p:nth-of-type(1), 
+  .complete-result > .final-result > p:nth-of-type(3) {
+    font-size: 2rem;
+  }
+.complete-result > .final-result > p:nth-of-type(2) {
+  font-size: 5rem;
+}
+.complete-result > .final-result > p:nth-of-type(4) {
+  font-size: 3rem;
+}
+}
+/* ---------------------active radio btn */
+.active-radio-btn {
+  border-color: var(--lime);
+  background-color: hsla(61, 70%, 52%, .1);
+}
+.d-none { display: none; }
